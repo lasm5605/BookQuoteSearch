@@ -29,8 +29,8 @@ void insert_SuffixTree(SuffixTree* tree, string str, string held_text, edge* cur
     int value = leaf_count;
     
     //create vector to hold all edges
-    vector<edge*> edges;
-    vector<edge*> all_edges;
+    vector<edge*> edges; //holds just the parent edges coming directly from root
+    vector<edge*> all_edges; //holds all edges created
     
     //if vector is empty, add starting edge to vector
     if (edges.size() == 0) {
@@ -84,7 +84,7 @@ void insert_SuffixTree(SuffixTree* tree, string str, string held_text, edge* cur
                     break;
                 }
                 else if (edges[e] -> child -> is_leaf == false) {
-                    //need a condition to check if children added after suffix already has two children have matching first letters
+                    //condition to check if children added after suffix already has two children have matching first letters
                     //if so, create new parent edge and two new child edges
                     cursor = edges[e];
                     value = value + 1;
